@@ -8,8 +8,10 @@ RUN apt-get install mariadb-server -y
 
 COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
 
-COPY ./tools/init.sql /
+COPY ./tools/init.sh /
 
-RUN mysql < /init.sql
+RUN chmod +x init.sh
+
+ENTRYPOINT ["/bin/bash","/init.sh"]
 
 CMD ["mysqld"]
