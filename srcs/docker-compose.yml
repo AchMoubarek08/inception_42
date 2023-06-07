@@ -1,5 +1,10 @@
 version: '3'
 
+
+networks:
+  inception:
+
+          
 services:
   nginx:
     depends_on:
@@ -25,8 +30,6 @@ services:
       - ./.env
     expose:
       - "3306"
-    volumes:
-      - wp_db:/var/lib/mysql
     container_name: mariadb
     networks:
       - inception
@@ -40,7 +43,7 @@ services:
     env_file:
       - ./.env
     expose:
-      - "9000"
+            - "9000"
     volumes:
       - wp_files:/var/www/html
     container_name: wordpress
@@ -62,6 +65,4 @@ volumes:
       o: bind
       device: /home/amoubare/data/wp_files
 
-networks:
-  inception:
-    driver: bridge
+
