@@ -13,5 +13,7 @@ COPY ./tools /var/www/
 
 RUN chmod +x /var/www/wp-install.sh
 
+RUN rm -rf /var/www/html
+
 CMD ["/var/www/wp-install.sh" ,"/usr/sbin/php-fpm7.3", "-F"]
 
