@@ -30,6 +30,8 @@ services:
       - ./.env
     expose:
       - "3306"
+    volumes:
+      - wp_db:/var/lib/mysql 
     container_name: mariadb
     networks:
       - inception
